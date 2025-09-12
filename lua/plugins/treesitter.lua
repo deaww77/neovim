@@ -8,7 +8,7 @@ return {
       indent = { enable = true },
       autotag = { enable = true },
       ensure_installed = {
-        "lua", "typescript", "php", "javascript", "html", "css"
+        "lua", "typescript", "php", "javascript", "html", "css", "tsx"
       },
       auto_install = false,
     }

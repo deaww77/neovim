@@ -4,7 +4,7 @@ return {
   version = "*",
   config = function()
     require("toggleterm").setup{
-      size = 20,                -- ความสูงของ terminal
+      size = 10,                -- ความสูงของ terminal
       open_mapping = [[<c-\>]], -- Ctrl+\ เปิด/ปิด terminal
       direction = 'horizontal', -- terminal split ด้านล่าง
       shade_terminals = true,   
@@ -13,7 +13,6 @@ return {
       close_on_exit = false,    
     }
 
-    -- ตัวอย่าง hotkey toggle npm run dev
     local Terminal  = require("toggleterm.terminal").Terminal
     local npm_dev = Terminal:new({ cmd = "npm run dev", hidden = true })
 
