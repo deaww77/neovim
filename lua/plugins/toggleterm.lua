@@ -21,6 +21,13 @@ return {
     end
 
     vim.api.nvim_set_keymap("n", "<leader>d", "<cmd>lua _NPM_DEV_TOGGLE()<CR>", {noremap = true, silent = true})
-  end
-}
+  end,
+    vim.keymap.set("n", "<leader>gg", function ()
+	require("toggleterm.terminal").Terminal:new({
+	    cmd = "lazygit",
+	    hidden = true,
+	    direction = "float",
+	}):toggle()
+    end, { noremap = true, silent = true})
 
+}
