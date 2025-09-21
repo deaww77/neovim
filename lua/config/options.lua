@@ -5,4 +5,5 @@ vim.opt.termguicolors = true
 vim.opt.wildoptions = 'pum'
 vim.opt.pumblend = 5
 vim.opt.wrap = false
+vim.opt.timeoutlen = 300
 
