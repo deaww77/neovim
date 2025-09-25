@@ -5,10 +5,13 @@ vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
 vim.keymap.set('n', '<leader>c', '<Cmd>BufferClose<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>n', '<Cmd>BufferNext<CR>',  { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>p', '<Cmd>BufferPrevious<CR>',  { noremap = true, silent = true })
-
-vim.keymap.set('n', '<leader>-', ':split<CR>', { silent = true })
 -- split แนวตั้ง
 vim.keymap.set('n', '<leader>=', ':vsplit<CR>', { silent = true })
+vim.keymap.set('n', '<leader>-', ':split<CR>', { silent = true })
+-- save file
+vim.keymap.set('n', '<leader>w', '<Cmd>w<CR>', { desc = "Save file" })
+vim.keymap.set('n', '<leader>wq', '<Cmd>wq<CR>', { desc = "Save and out "})
+vim.keymap.set('n', '<leader>wa', '<Cmd>wa<CR>', { desc = "Save all file "})
 
 -- ย้ายไปยัง split ข้างๆ ด้วย leader + h/j/k/l
 vim.keymap.set('n', '<leader>h', '<C-w>h')

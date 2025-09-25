@@ -25,7 +25,7 @@ return {
     })
     
     -- Keymap สำหรับ manual lint
-    vim.keymap.set('n', '<leader>l', function()
+    vim.keymap.set('n', '<leader>i', function()
       lint.try_lint()
     end, { desc = 'Trigger linting for current file' })
   end,

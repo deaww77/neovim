@@ -3,18 +3,34 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
       
       -- Python
-      lspconfig.pyright.setup {}
+      vim.lsp.config.pyright = {}
       
       -- Lua
-      lspconfig.lua_ls.setup {}
+      vim.lsp.config.lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' }
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true)
+            }
+          }
+        }
+      }
       
-      lspconfig.dartls.setup {
+      -- Dart/Flutter
+      vim.lsp.config.dartls = {
         cmd = { "dart", "language-server", "--protocol=lsp" },
         filetypes = { "dart" },
-        root_dir = lspconfig.util.root_pattern("pubspec.yaml", ".git"),
+        root_dir = function(fname)
+          return vim.fs.dirname(vim.fs.find({'pubspec.yaml', '.git'}, { 
+            upward = true, 
+            path = fname 
+          })[1])
+        end,
         init_options = {
           onlyAnalyzeProjectsWithOpenFiles = true,
           suggestFromUnimportedLibraries = true,
@@ -31,13 +47,13 @@ return {
       }
       
       -- HTML
-      lspconfig.html.setup {}
+      vim.lsp.config.html = {}
       
       -- CSS
-      lspconfig.cssls.setup {}
+      vim.lsp.config.cssls = {}
       
       -- TypeScript/JavaScript
-      lspconfig.ts_ls.setup {}
+      vim.lsp.config.ts_ls = {}
     end,
   },
   
@@ -59,6 +75,13 @@ return {
           "cssls", 
           "ts_ls"
         },
+        handlers = {
+          function(server_name)
+            if not vim.lsp.config[server_name] then
+              vim.lsp.config[server_name] = {}
+            end
+          end,
+        }
       }
     end,
   },
